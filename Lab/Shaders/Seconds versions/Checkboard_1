@@ -1,0 +1,14 @@
+// simple fragment shader
+
+// 'time' contains seconds since the program was linked.
+uniform float time;
+
+void main()
+{
+	float ss = mod(gl_TexCoord[0].s * 8.0, 8.0);
+	float tt = mod(gl_TexCoord[0].t * 8.0, 8.0);
+	float oddevens = mod(ss, 2.0);
+	float oddevent = mod(tt, 2.0);
+	if ((oddevens == 0.0 && oddevent == 0.0) || (oddevens == 1.0 && oddevent == 1.0)) gl_FragColor = vec4(0.0,0.0,0.0,1.0);
+	else gl_FragColor = vec4(0.5, 0.5, 0.5, 1.0);
+}
